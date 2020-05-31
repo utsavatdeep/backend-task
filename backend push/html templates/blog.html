@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+{% for ind in blogs %}
+<div>
+  <h2> {{ind['title']}} by {{ind['username']}} </h2>
+  <p> {{ind['post']}} </p>
+  <form action="/comment" method="POST">
+    <button type="submit" value={{ind['BID']}} name="BID">View / Add Comments </button>
+  </form>
+</div>
+{% endfor %}
+
+<form action="/blog" method = "POST">
+  {% if prevP %}
+  <button type="submit" name="prev" value={{blogID}} >Previous</button>
+  {% endif %}
+  {% if nextP %}
+  <button type="submit" name="next" value={{blogID}} >Next</button>
+  {% endif %}
+</form>
+
+
+{% endblock %}
