@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% for ind in blog %}
+<div>
+  <h2> {{ind['title']}} by {{ind['username']}} </h2>
+  <p> {{ind['content']}} </p>
+</div>
+{% endfor %}
+
+{% for blah in comments %}
+<div>
+  <b> {{blah['username']}} </b>
+  <p> {{blah['comment']}} </p>
+</div>
+{% endfor %}
+
+<div>
+  <form action="/comment" method = "POST" id="comment">
+    <textarea class="comment" name="text" placeholder="AWESOME COMMENT" form="comment"></textarea>
+    <br>
+    <button type="submit" value={{BID}} name="BID"> Add Comment </button>
+    <br>
+    <button> <a href="/blog">Back to Blog</a> </button>
+  </form>
+</div>
+
+{% endblock %}
